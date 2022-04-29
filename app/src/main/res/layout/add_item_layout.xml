@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/add_item_layout"
+        android:textSize="20dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radios"
+        android:layout_below="@id/heading"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listRadio1"
+            android:text="List 1"/>
+
+        <RadioButton
+            android:layout_marginStart="20dp"
+            android:id="@+id/listRadio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/listRadio1"
+            android:text="List 2" />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radios"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="Enter item name!"
+        android:layout_marginEnd="50dp"
+        android:id="@+id/itemEditText"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Item"
+        android:textAllCaps="true"
+        android:layout_below="@id/itemEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/add_item_btn"/>
+
+</RelativeLayout>
