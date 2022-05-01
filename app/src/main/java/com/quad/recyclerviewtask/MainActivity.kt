@@ -1,5 +1,6 @@
 package com.quad.recyclerviewtask
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -130,20 +131,19 @@ class MainActivity : AppCompatActivity() , RightShiftListItemClick,LeftShiftList
         }
     }
 
+    @SuppressLint("InflateParams")
     fun addItem()
     {
-        var dialog: Dialog? = null
         try {
-            dialog?.dismiss()
-            dialog = Dialog(this)
-            dialog.setCancelable(true)
-            val m_inflater = LayoutInflater.from(applicationContext)
-            val m_view = m_inflater.inflate(R.layout.add_item_layout, null, false)
+            val dialog = Dialog(this@MainActivity)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.add_item_layout)
             dialog.show()
-            val yesButton=m_view.findViewById<Button>(R.id.add_item_btn)
-            val editext=m_view.findViewById<EditText>(R.id.itemEditText)
-            val list1=m_view.findViewById<RadioButton>(R.id.listRadio1)
-            val list2=m_view.findViewById<RadioButton>(R.id.listRadio2)
+            val yesButton=dialog.findViewById<Button>(R.id.add_item_btn)
+            val editext=dialog.findViewById<EditText>(R.id.itemEditText)
+            val list1=dialog.findViewById<RadioButton>(R.id.listRadio1)
+            val list2=dialog.findViewById<RadioButton>(R.id.listRadio2)
 
             yesButton.setOnClickListener {
                 val name=editext.text.toString().trim()
@@ -155,15 +155,16 @@ class MainActivity : AppCompatActivity() , RightShiftListItemClick,LeftShiftList
                     if(list1.isChecked){
                         itemModelList1.add(ItemModel(name))
                         adapterLeftItem.setList(itemModelList1)
+                        check()
                         dialog.dismiss()
                     }else if(list2.isChecked){
                         itemModelList2.add(ItemModel(name))
                         adapterRightItem.setList(itemModelList2)
+                        check()
                         dialog.dismiss()
                     }
                 }
             }
-
         }catch (e:Exception){
             e.printStackTrace()
         }
